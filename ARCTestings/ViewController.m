@@ -80,7 +80,11 @@
  To allow interoperation with manual retain-release code, ARC imposes a constraint on method naming:
  
  You cannot give an accessor a name that begins with new. This in turn means that you can’t, for example, declare a property whose name begins with new unless you specify a different getter:
+ // Won't work:
+ @property NSString *newTitle;
  
+ // Works:
+ @property (getter=theNewTitle) NSString *newTitle;
  */
 
 #pragma mark -
@@ -359,7 +363,6 @@
     CGGradientRef gradient2 = (__bridge CGGradientRef)CFBridgingRelease(CGGradientCreateWithColors(colorSpace2, (__bridge CFArrayRef)colors2, locations2));
     
     gradient2 = gradient2; //Do whatever you need with gradient2
-
 }
 
 #pragma mark DEALLOC
