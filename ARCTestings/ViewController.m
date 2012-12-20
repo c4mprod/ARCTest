@@ -155,10 +155,16 @@
 
     //Be carful with __weak (xCode warns you) ->immediately deallocated.
     NSString * __weak string = [[NSString alloc] initWithFormat:@"First Name: %@", @"ARCTestings"];
-    NSLog(@"__weak string: %@", string);
+    NSLog(@"__weak allocated string: %@", string);
     
     NSString * __strong string2 = [[NSString alloc] initWithFormat:@"First Name: %@", @"ARCTestings"];
-    NSLog(@"__strong string: %@", string2);
+    NSLog(@"__strong allocated string: %@", string2);
+    
+    NSString * __weak string3 = [NSString stringWithFormat: @"First Name: %@", @"ARCTestings"];
+    NSLog(@"__weak string: %@", string3);
+    
+    NSString * __strong string4 = [NSString stringWithFormat: @"First Name: %@", @"ARCTestings"];
+    NSLog(@"__strong  string: %@", string4);
 }
 
 -(void)weakStrongProperties //see ViewController.h
